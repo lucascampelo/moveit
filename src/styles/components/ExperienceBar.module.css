@@ -20,10 +20,41 @@
   height: 4px;
   border-radius: 4px;
   background: var(--green);
+
+  transition: width 0.5s;
 }
 
 .experienceBar > div span.currentExperience {
   position: absolute;
-  top: 12px;
+  top: 17px;
   transform: translateX(-50%);
+  background: var(--green);
+  color: var(--text);
+  padding: 2px 4px 4px;
+  border-radius: 5px;
+
+  filter: brightness(1);
+
+
+  transition: filter 0.2s ease-in, left 0.5s;
+  cursor: default;
+}
+
+.experienceBar > div span.currentExperience:hover {
+  filter: brightness(0.8);
+}
+
+.experienceBar > div span.currentExperience:after {
+  display: block;
+  content: ' ';
+  position: absolute;
+  top: -6px;
+  left: 50%;
+  margin-left: -9px;
+
+  width: 0;
+  height: 0;
+  border-style: solid;
+  border-width: 0 9px 6px 9px;
+  border-color: transparent transparent var(--green) transparent;
 }
