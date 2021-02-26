@@ -11,13 +11,17 @@
     align-items: center;
 }
 
+:global .dark-mode:root :local .overlay {
+    background: rgba(23, 23, 26, 0.8);
+}
+
 .container {
     background: var(--white);
     width: 100%;
     max-width: 400px;
     padding: 2rem 3rem;
     border-radius: 5px;
-    box-shadow: 0 0 60px rgba(0, 0, 0, 0.05);
+    box-shadow: 0 0 60px var(--shadow);
     text-align: center;
     position: relative;
 }

@@ -2,7 +2,7 @@
     height: 100%;
     background: var(--white);
     border-radius: 5px;
-    box-shadow: 0 0 60px rgba(0,0,0, 0.05);
+    box-shadow: 0 0 60px var(--shadow);
 
     display: flex;
     flex-direction: column;
@@ -122,4 +122,24 @@
 
 .challengeActive footer button:hover {
     filter: opacity(0.8);
+}
+
+/* dark mode */
+
+:global .dark-mode:root :local .challengeActive footer button.challengeFailedButton {
+    background-color: #252222;
+}
+
+:global .dark-mode:root :local .challengeActive footer button.challengeSucceededButton {
+    background-color: #222522;
+}
+
+:global .dark-mode:root :local .challengeActive footer button.challengeFailedButton:hover {
+    background-color: var(--red);
+    color: var(--white);
+}
+
+:global .dark-mode:root :local .challengeActive footer button.challengeSucceededButton:hover {
+    background-color: var(--green);
+    color: var(--white);
 }

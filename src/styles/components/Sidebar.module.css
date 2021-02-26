@@ -1,0 +1,72 @@
+.sidebarContainer {
+    background-image: linear-gradient(var(--white), var(--background));
+    flex-shrink: 100%;
+    padding: 2rem 0;
+    width: 112px;
+    display: flex;
+    align-items: stretch;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.sidebarContainer > img {
+    align-self: center;
+    justify-self: baseline;
+}
+
+.menuItems {
+    display: flex;
+    align-self: stretch;
+    align-items: center;
+    justify-content: center;
+    
+    flex: 2;
+}
+
+.menuItems ul {
+    list-style: none;
+    width: 100%;
+}
+
+.menuItems ul li {
+    text-align: center;
+    color: var(--text);
+    position: relative;
+    padding: 0.5rem 0;
+    margin: 0.5rem 0;
+}
+
+
+.menuItems ul li span {
+    vertical-align: middle;
+    font-size: 2rem;
+}
+
+.menuItems ul li a, 
+.menuItems ul li button {
+    color: var(--text);
+    background: transparent;
+    border: none;
+    display: inline;
+    cursor: pointer;
+    outline: none;
+}
+
+.menuItems ul :global li.active :local a, 
+.menuItems ul :global li.active :local button {
+    color: var(--blue);
+}
+
+.menuItems ul :global li.active:before, 
+.menuItems ul :global li.active:before {
+    content: ' ';
+    display: block;
+    background: var(--blue);
+    width: 3px;
+    position: absolute;
+    top: 0px;
+    bottom: 0px;
+    left: 0;
+    border-radius: 0 3px 3px 0;
+}
+

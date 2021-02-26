@@ -14,6 +14,7 @@ import { ChallengeBox } from "components/ChallengeBox";
 import { CountdownProvider } from 'contexts/CountdownContext';
 
 import styles from '../styles/pages/Home.module.css';
+import { Sidebar } from 'components/Sidebar';
 
 interface HomeProps {
   level: number;
@@ -32,12 +33,13 @@ export default function Home({
       currentExperience={currentExperience}
       challengesCompleted={challengesCompleted}
     >
+      <Sidebar />
+
       <div className={styles.container}>
         <Head>
           <title>Início | move.it</title>
         </Head>
         <ExperienceBar />
-
 
         <CountdownProvider>
           <section>
