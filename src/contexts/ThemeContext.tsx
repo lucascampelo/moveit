@@ -1,24 +1,31 @@
-import { createContext, useState } from "react";
+import { createContext, useEffect, useState } from "react";
+import Cookies from 'js-cookie';
 
 interface ThemeContextData {
-    isDark: boolean;
-    toggleDarkMode: () => void;
+  isDark: boolean;
+  toggleDarkMode: () => void;
 }
 
 export const ThemeContext = createContext({} as ThemeContextData);
 
-export function ThemeProvider({children}) {
+export function ThemeProvider({ children, ...rest }) {
+  const isDarkCookie: any = rest.isDark;
 
-    const [isDark, setIsDark] = useState(false);
+  const [isDark, setIsDark] = useState(isDarkCookie ? true : false);
 
-    function toggleDarkMode() {
-        setIsDark(!isDark);
-    }
+  useEffect(() => {
+    Cookies.set('isDark', isDark ? '1' : '0');
 
-    return <ThemeContext.Provider value={{
-        isDark,
-        toggleDarkMode
-    }}>
-        {children}
-    </ThemeContext.Provider>
+  }, [isDark]);
+
+  function toggleDarkMode() {
+    setIsDark(!isDark);
+  }
+
+  return <ThemeContext.Provider value={{
+    isDark,
+    toggleDarkMode
+  }}>
+    {children}
+  </ThemeContext.Provider>
 }
