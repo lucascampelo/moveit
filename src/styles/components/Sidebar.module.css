@@ -1,72 +1,126 @@
 .sidebarContainer {
-    background-image: linear-gradient(var(--white), var(--background));
-    flex-shrink: 100%;
-    padding: 2rem 0;
-    width: 112px;
-    display: flex;
-    align-items: stretch;
-    justify-content: center;
-    flex-direction: column;
+  background-image: linear-gradient(var(--white), var(--background));
+  flex-shrink: 100%;
+  padding: 2rem 0;
+  width: 112px;
+  display: flex;
+  align-items: stretch;
+  justify-content: center;
+  flex-direction: column;
 }
 
 .sidebarContainer > img {
-    align-self: center;
-    justify-self: baseline;
+  align-self: center;
+  justify-self: baseline;
 }
 
 .menuItems {
-    display: flex;
-    align-self: stretch;
-    align-items: center;
-    justify-content: center;
-    
-    flex: 2;
+  display: flex;
+  align-self: stretch;
+  align-items: center;
+  justify-content: center;
+
+  flex: 2;
 }
 
 .menuItems ul {
-    list-style: none;
-    width: 100%;
+  list-style: none;
+  width: 100%;
 }
 
 .menuItems ul li {
-    text-align: center;
-    color: var(--text);
-    position: relative;
-    padding: 0.5rem 0;
-    margin: 0.5rem 0;
+  text-align: center;
+  color: var(--text);
+  position: relative;
+  padding: 0.5rem 0;
+  margin: 0.5rem 0;
 }
-
 
 .menuItems ul li span {
-    vertical-align: middle;
-    font-size: 2rem;
+  vertical-align: middle;
+  font-size: 2rem;
 }
 
-.menuItems ul li a, 
+.menuItems ul li a,
 .menuItems ul li button {
-    color: var(--text);
-    background: transparent;
-    border: none;
-    display: inline;
-    cursor: pointer;
-    outline: none;
+  color: var(--text);
+  background: transparent;
+  border: none;
+  display: inline;
+  cursor: pointer;
+  outline: none;
 }
 
-.menuItems ul :global li.active :local a, 
+.menuItems ul :global li.active :local a,
 .menuItems ul :global li.active :local button {
-    color: var(--blue);
+  color: var(--blue);
 }
 
-.menuItems ul :global li.active:before, 
+.menuItems ul :global li.active:before,
 .menuItems ul :global li.active:before {
-    content: ' ';
-    display: block;
-    background: var(--blue);
-    width: 4px;
-    position: absolute;
-    top: 0px;
-    bottom: 0px;
-    left: 0;
-    border-radius: 0 5px 5px 0;
+  content: " ";
+  display: block;
+  background: var(--blue);
+  width: 4px;
+  position: absolute;
+  top: 0px;
+  bottom: 0px;
+  left: 0;
+  border-radius: 0 5px 5px 0;
 }
 
+.canvasWrapper {
+  overflow: hidden;
+  animation: closeAsCircleWrapper 0.5s ease-out 0s 1 normal forwards;
+  position: absolute;
+  top: 0%;
+  left: 0%;
+  height: 100%;
+  width: 100%;
+  pointer-events: none;
+}
+
+.canvas {
+  animation: closeAsCircleCanvas 0.5s ease-out 0s 1 normal forwards;
+}
+
+@keyframes closeAsCircleWrapper {
+  0% {
+    border-radius: 0;
+    top: 0vh;
+    left: 0vw;
+    margin-top: 0;
+    margin-left: 0;
+  }
+
+  30% {
+    border-radius: 50%;
+    width: 70vh;
+    height: 70vh;
+    left: calc(50vw - 35vh);
+  }
+
+  100% {
+    border-radius: 50%;
+    width: 0vh;
+    height: 0vh;
+    top: 50vh;
+    left: 50vw;
+  }
+}
+
+@keyframes closeAsCircleCanvas {
+  0% {
+    margin-top: 0vh;
+    margin-left: 0vw;
+  }
+
+  30% {
+    margin-left: calc(-50vw + 35vh);
+  }
+
+  100% {
+    margin-top: -50vh;
+    margin-left: -50vw;
+  }
+}

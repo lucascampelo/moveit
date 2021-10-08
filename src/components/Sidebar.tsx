@@ -1,9 +1,27 @@
 import { ThemeContext } from 'contexts/ThemeContext';
-import { useContext, useEffect, useState } from 'react';
+import { useContext, useEffect } from 'react';
 import styles from '../styles/components/Sidebar.module.css';
+import html2canvas from 'html2canvas';
 
 export function Sidebar() {
     const { isDark, toggleDarkMode } = useContext(ThemeContext);
+
+    const toggleDarkModeAnimation = async () => {
+        if ('HTMLCanvasElement' in window) {
+            const canvas = await html2canvas(document.body, {
+                allowTaint: true
+            })
+            canvas.classList.add(styles.canvas)
+            const wrapper = document.createElement('div')
+            wrapper.classList.add(styles.canvasWrapper)
+            wrapper.appendChild(canvas)
+            document.body.appendChild(wrapper)
+            setTimeout(() => {
+                wrapper.remove()
+            }, 510)
+        }
+        toggleDarkMode()
+    }
 
     useEffect(() => {
         const html = document.body.parentNode as HTMLElement;
@@ -23,7 +41,7 @@ export function Sidebar() {
                     <li className={isDark ? 'active' : ''}>
                         <button
                             type="button"
-                            onClick={toggleDarkMode}
+                            onClick={toggleDarkModeAnimation}
                         >
                             <span className="material-icons">{isDark ? 'toggle_on' : 'toggle_off'}</span> Dark
                         </button>
